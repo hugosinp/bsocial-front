@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import styles from '../../styles/Register.module.css';
+import axios from 'axios';
 
 export default function Home() {
 	// States for registration
-	const [name, setName] = useState('');
+	const [firstname, setFirstname] = useState('');
+	const [lastname, setLastname] = useState('');
+	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -11,9 +14,17 @@ export default function Home() {
 	const [submitted, setSubmitted] = useState(false);
 	const [error, setError] = useState(false);
 
-	// Handling the name change
+	const handleFirstname = (e) => {
+		setFirstname(e.target.value);
+		setSubmitted(false);
+	};
+	const handleLastname = (e) => {
+		setLastname(e.target.value);
+		setSubmitted(false);
+	};
+
 	const handleName = (e) => {
-		setName(e.target.value);
+		setUsername(e.target.value);
 		setSubmitted(false);
 	};
 
@@ -32,14 +43,16 @@ export default function Home() {
 	// Handling the form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (name === '' || email === '' || password === '') {
+		if (firstname === '' || lastname === '' || username === '' || email === '' || password === '') {
 			setError(true);
 		} else {
 			setSubmitted(true);
 			setError(false);
 			axios
 				.post('http://localhost:3001/users', {
-					name: name,
+					firstname: username,
+					lastname: username,
+					username: username,
 					email: email,
 					password: password,
 				})
@@ -61,7 +74,7 @@ export default function Home() {
 					display: submitted ? '' : 'none',
 				}}
 			>
-				<h1>User {name} successfully registered!!</h1>
+				<h1>User {username} successfully registered!!</h1>
 			</div>
 		);
 	};
@@ -89,8 +102,14 @@ export default function Home() {
 				<span className={styles.success}>{successMessage()}</span>
 			</div>
 			<form>
+				<label className={styles.label}>First Name</label>
+				<input onChange={handleFirstname} className={styles.input} value={firstname} type="text" />
+
+				<label className={styles.label}>Last Name</label>
+				<input onChange={handleLastname} className={styles.input} value={lastname} type="text" />
+
 				<label className={styles.label}>Name</label>
-				<input onChange={handleName} className={styles.input} value={name} type="text" />
+				<input onChange={handleName} className={styles.input} value={username} type="text" />
 
 				<label className={styles.label}>Email</label>
 				<input onChange={handleEmail} className={styles.input} value={email} type="email" />
