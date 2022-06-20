@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 
 export default function Login() {
 	// States for registration
-	const [email, setEmail] = useState('');
+	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const router = useRouter();
 
@@ -13,9 +13,9 @@ export default function Login() {
 	const [submitted, setSubmitted] = useState(false);
 	const [error, setError] = useState(false);
 
-	// Handling the email change
-	const handleEmail = (e) => {
-		setEmail(e.target.value);
+	// Handling the username change
+	const handleUsername = (e) => {
+		setUsername(e.target.value);
 		setSubmitted(false);
 	};
 
@@ -28,18 +28,19 @@ export default function Login() {
 	// Handling the form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (email === '' || password === '') {
+		if (username === '' || password === '') {
 			setError(true);
 		} else {
 			setSubmitted(true);
 			setError(false);
 			axios
-				.post('http://localhost:3001/login', {
-					email: email,
+				.post('http://localhost:3001/auth/login', {
+					username: username,
 					password: password,
 				})
 				.then(function (response) {
 					router.push("http://localhost:3000/home").then();
+					localStorage.setItem("token", response.data.accessToken);
 				})
 				.catch(function (error) {
 					console.log(error);
@@ -84,8 +85,8 @@ export default function Login() {
 				<span className={styles.success}>{successMessage()}</span>
 			</div>
 			<form>
-				<label className={styles.label}>Email</label>
-				<input onChange={handleEmail} className={styles.input} value={email} type="email" />
+				<label className={styles.label}>Username</label>
+				<input onChange={handleUsername} className={styles.input} value={username} type="username" />
 				<label className={styles.label}>Password</label>
 				<input onChange={handlePassword} className={styles.input} value={password} type="password" />
 				<button onClick={handleSubmit} className={styles.btn} type="submit">

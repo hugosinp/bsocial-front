@@ -23,8 +23,11 @@ export default function Post() {
 			setError(false);
 			axios
 				.post('http://localhost:3001/posts', {
-					//token: storage.token,
 					content: content,
+				}, {
+					headers: {
+						'Authorization': `Bearer ${localStorage.getItem("token")}`,
+					}
 				})
 				.then(function () {
 					router.push("http://localhost:3000/home").then();
