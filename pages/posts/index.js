@@ -1,44 +1,32 @@
 import { useState } from 'react';
-import styles from '../../styles/Register.module.css';
 import axios from "axios";
 import {useRouter} from "next/router";
+import styles from '../../styles/Post.module.css';
 
-export default function Login() {
-	// States for registration
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+export default function Post() {
 	const router = useRouter();
-
-	// States for checking the errors
+	const [content, setContent] = useState('');
 	const [submitted, setSubmitted] = useState(false);
 	const [error, setError] = useState(false);
 
-	// Handling the email change
-	const handleEmail = (e) => {
-		setEmail(e.target.value);
+	const handleContent = (e) => {
+		setContent(e.target.value);
 		setSubmitted(false);
 	};
 
-	// Handling the password change
-	const handlePassword = (e) => {
-		setPassword(e.target.value);
-		setSubmitted(false);
-	};
-
-	// Handling the form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (email === '' || password === '') {
+		if (content === '') {
 			setError(true);
 		} else {
 			setSubmitted(true);
 			setError(false);
 			axios
-				.post('http://localhost:3001/login', {
-					email: email,
-					password: password,
+				.post('http://localhost:3001/posts', {
+					//token: storage.token,
+					content: content,
 				})
-				.then(function (response) {
+				.then(function () {
 					router.push("http://localhost:3000/home").then();
 				})
 				.catch(function (error) {
@@ -47,7 +35,6 @@ export default function Login() {
 		}
 	};
 
-	// Showing success message
 	const successMessage = () => {
 		return (
 			<div
@@ -56,12 +43,11 @@ export default function Login() {
 					display: submitted ? '' : 'none',
 				}}
 			>
-				<h1>Successfully logged in!!</h1>
+				<h1>Successfully create a post!!</h1>
 			</div>
 		);
 	};
 
-	// Showing error message if error is true
 	const errorMessage = () => {
 		return (
 			<div
@@ -77,17 +63,17 @@ export default function Login() {
 	return (
 		<div className={styles.form}>
 			<div>
-				<h1>User Login</h1>
+				<h1>Create a post</h1>
 			</div>
 			<div className={styles.messages}>
 				<span className={styles.error}>{errorMessage()}</span>
 				<span className={styles.success}>{successMessage()}</span>
 			</div>
 			<form>
-				<label className={styles.label}>Email</label>
-				<input onChange={handleEmail} className={styles.input} value={email} type="email" />
-				<label className={styles.label}>Password</label>
-				<input onChange={handlePassword} className={styles.input} value={password} type="password" />
+				<label className={styles.label}>Content</label>
+				<textarea className={styles.content} name="body" maxLength="280" rows={6}
+						  onChange={handleContent}
+						  value={content}/>
 				<button onClick={handleSubmit} className={styles.btn} type="submit">
 					Submit
 				</button>
