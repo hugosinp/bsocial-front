@@ -58,7 +58,7 @@ export default function Register() {
 					email: email,
 					password: password,
 				})
-				.then(function (response) {
+				.then(function () {
 					router.push("http://localhost:3000/login").then();
 				})
 				.catch(function (error) {
