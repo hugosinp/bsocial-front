@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import styles from '../../styles/Register.module.css';
 import axios from 'axios';
+import {useRouter} from "next/router";
 
-export default function Home() {
+export default function Register() {
 	// States for registration
 	const [firstname, setFirstname] = useState('');
 	const [lastname, setLastname] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const router = useRouter();
 
 	// States for checking the errors
 	const [submitted, setSubmitted] = useState(false);
@@ -57,7 +59,7 @@ export default function Home() {
 					password: password,
 				})
 				.then(function (response) {
-					console.log(response);
+					router.push("http://localhost:3000/login").then();
 				})
 				.catch(function (error) {
 					console.log(error);
