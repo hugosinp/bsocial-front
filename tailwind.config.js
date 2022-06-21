@@ -1,4 +1,3 @@
-const plugin = require('tailwindcss/plugin');
 module.exports = {
 	content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
 
@@ -21,51 +20,56 @@ module.exports = {
 		colors: {
 			black: '#000000',
 			green: '#3F9F98',
+			greenOutline: '#2d807a',
 			blue: '#587CBF',
 			darkBlue: '#3B5CAB',
+			selectedBlue: '#284984',
 			white: '#FFFFFF',
 			darkGray: '#4A4C54',
+			midGray: '#616a7e',
+			thinMidGray: '#949aa5',
 			gray: '#616A7E',
+			middleGray: '#cdd0d7',
+			lightGray: '#F7F8FA',
+			lightBlue: '#F3F7FF',
+			blueGreen: '#1EA2BB',
+			grayBackground: '#F4F6FC',
+			hoverGreen: '#308d86',
+			lightGreenHover: '#e7f6f4',
 			red: '#B61A0A',
+			blueGreen: '#1DA1BB',
+			disabledGray: '#a4a4b0',
+			grayBorder: '#CDD0D7',
+			stepperGray: '#A7AEBE',
+			bodyColor: '#F4F6FC',
+			captionGray: '#616a7f',
+			backgroundWelcomePage: '#436ABF',
+			symptomsZone: '#f6f8fa',
+			// border
+			bgSpecification: '#60729a',
+			borderGray: '#ebebeb',
+			borderLightGray: '#d8e0f1',
+			// liserer
+			edgingGray: '#ebeef5',
+			// inputField
+			crossInputBg: '#ebedf3',
+			crossInputSVG: '#616B7D',
+			textGray: '#4A4C54',
+			// replace
+			checkboxGray: '#4A4C54',
+			validationGray: '#4A4C54',
+			// diagnose
+			hoverDiagnoses: '#f4f6fc',
 			linkColor: '#3b5cab',
 			orange: '#ee9642',
+			// about medvir
+			blueBanner: '#4065BD',
+			medvirInfo: '#1f9aaf',
+			// about accelrare
+			blueAccelRare: '#3f65bd',
+			tbColor: '#eaf0fc',
+			//diseases list
+			arrowBlue: '#3969c0',
 		},
 	},
-	plugins: [
-		plugin(function ({ addBase, theme }) {
-			addBase({
-				h1: {
-					fontSize: theme('fontSize.xl'),
-					fontFamily: theme('fontFamily.roboto'),
-				},
-				h2: {
-					fontSize: theme('fontSize.lg'),
-					fontFamily: theme('fontFamily.roboto'),
-				},
-				h3: {
-					fontSize: theme('fontSize.medium'),
-					fontFamily: theme('fontFamily.source'),
-				},
-				p: {
-					fontSize: theme('fontSize.base'),
-					fontFamily: theme('fontFamily.source'),
-				},
-				li: {
-					fontSize: theme('fontSize.base'),
-					fontFamily: theme('fontFamily.source'),
-				},
-				input: {
-					fontFamily: theme('fontFamily.source'),
-				},
-				th: {
-					fontSize: theme('fontSize.sm'),
-					fontFamily: theme('fontFamily.source'),
-				},
-				td: {
-					fontSize: theme('fontSize.base'),
-					fontFamily: theme('fontFamily.source'),
-				},
-			});
-		}),
-	],
 };

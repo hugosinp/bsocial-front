@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from '../../styles/Register.module.css';
-import axios from "axios";
-import {useRouter} from "next/router";
+import axios from 'axios';
+import useRouter from 'next/router';
 
 export default function Login() {
 	// States for registration
@@ -14,19 +14,19 @@ export default function Login() {
 	const [error, setError] = useState(false);
 
 	// Handling the username change
-	const handleUsername = (e) => {
+	const handleUsername = (e:any) => {
 		setUsername(e.target.value);
 		setSubmitted(false);
 	};
 
 	// Handling the password change
-	const handlePassword = (e) => {
+	const handlePassword = (e: any) => {
 		setPassword(e.target.value);
 		setSubmitted(false);
 	};
 
 	// Handling the form submission
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		if (username === '' || password === '') {
 			setError(true);
