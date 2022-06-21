@@ -12,7 +12,7 @@ const PostCard = ({ post }) => {
 			</div>
 			<Link href={`/posts/${post._id}`}>
 				<div>
-					<h3 className={styles.content}>{post.content}</h3>
+					<p className={styles.content}>{post.content}</p>
 				</div>
 			</Link>
 			<div>
