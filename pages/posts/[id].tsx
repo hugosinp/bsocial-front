@@ -1,8 +1,9 @@
 import axios from "axios";
 import styles from '../../styles/Post.module.css';
 import Button from "../../components/Button";
-import {useMemo, useState} from "react";
+import {ChangeEvent, useMemo, useState} from "react";
 import {useRouter} from "next/router";
+import TextArea from "../../components/TextArea";
 
 export default function GetPostById({post}) {
 	const router = useRouter();
@@ -36,7 +37,7 @@ export default function GetPostById({post}) {
 	const renderTextArea = useMemo(() => {
 		return (
 			<div className={styles.commentArea}>
-				<textarea className={styles.textArea} name="body" maxLength="280" row={1}
+				<textarea className={styles.textArea} name="body" rows={1}
 						  onChange={handleContent}
 						  value={content}/>
 				<div className={styles.commentButton}>

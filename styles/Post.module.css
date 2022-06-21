@@ -53,6 +53,7 @@
 .textArea {
     resize: vertical;
     width: 100%;
+    min-height: 6vh;
 }
 
 .commentButton {
