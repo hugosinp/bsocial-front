@@ -12,8 +12,8 @@ const Button: React.FC<ButtonProps> = ({ variant, onClick, fullWidth = false, ch
 	<>
 		<button
 			className={clsx({
-				'font-semibold active:drop-shadow-xl py-2 px-4 rounded font-source': true,
-				'bg-green hover:bg-hoverGreen  text-white text-medium': variant === 'contained',
+				'active:drop-shadow-xl py-1 px-2 rounded font-source': true,
+				'bg-twitter hover:bg-hoverTwitter text-white': variant === 'contained',
 				'bg-white': variant === 'white',
 				'w-full': fullWidth,
 				'bg-transparent text-greenOutline hover:bg-lightGreenHover  border-2  border-greenOutline py-1': variant === 'outline',
