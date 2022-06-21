@@ -71,7 +71,7 @@ module.exports = {
 			//diseases list
 			arrowBlue: '#3969c0',
 			twitter: '#4c9eeb',
-			hoverTwitter: '#3969c0'
+			hoverTwitter: '#3969c0',
 		},
 	},
 };

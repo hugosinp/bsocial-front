@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import axios from "axios";
-import {useRouter} from "next/router";
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import styles from '../../styles/CreatePost.module.css';
 
 export default function Post() {
@@ -22,15 +22,19 @@ export default function Post() {
 			setSubmitted(true);
 			setError(false);
 			axios
-				.post('http://localhost:3001/posts', {
-					content: content,
-				}, {
-					headers: {
-						'Authorization': `Bearer ${localStorage.getItem("token")}`,
+				.post(
+					'http://localhost:3001/posts',
+					{
+						content: content,
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem('token')}`,
+						},
 					}
-				})
+				)
 				.then(function () {
-					router.push("http://localhost:3000/home").then();
+					router.push('http://localhost:3000/home').then();
 				})
 				.catch(function (error) {
 					console.log(error);
@@ -74,9 +78,7 @@ export default function Post() {
 			</div>
 			<form>
 				<label className={styles.label}>Content</label>
-				<textarea className={styles.content} name="body" maxLength="280" rows={6}
-						  onChange={handleContent}
-						  value={content}/>
+				<textarea className={styles.content} name="body" maxLength="280" rows={6} onChange={handleContent} value={content} />
 				<button onClick={handleSubmit} className={styles.btn} type="submit">
 					Submit
 				</button>

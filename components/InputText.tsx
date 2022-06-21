@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Cross from '../public/assets/svg/cross';
 
@@ -15,6 +15,7 @@ interface InputTextProps {
 	cross?: boolean;
 	semiBold?: boolean;
 }
+
 const InputText: React.FC<InputTextProps> = ({
 	type = 'text',
 	fullWidth = false,

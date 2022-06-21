@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Cross from '../public/assets/svg/cross';
 
@@ -13,6 +13,7 @@ interface TextAreaProps {
 	resize?: boolean;
 	length?: number;
 }
+
 const TextArea: React.FC<TextAreaProps> = ({ rounded = true, value, handleDelete, cross = false, row = 6, resize = false, length = 280 }) => {
 	const [state, setState] = useState<string | number>(value);
 

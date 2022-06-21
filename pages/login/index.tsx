@@ -14,7 +14,7 @@ export default function Login() {
 	const [error, setError] = useState(false);
 
 	// Handling the username change
-	const handleUsername = (e:any) => {
+	const handleUsername = (e: any) => {
 		setUsername(e.target.value);
 		setSubmitted(false);
 	};
@@ -39,8 +39,8 @@ export default function Login() {
 					password: password,
 				})
 				.then(function (response) {
-					router.push("http://localhost:3000/home").then();
-					localStorage.setItem("token", response.data.accessToken);
+					router.push('http://localhost:3000/home').then();
+					localStorage.setItem('token', response.data.accessToken);
 				})
 				.catch(function (error) {
 					console.log(error);

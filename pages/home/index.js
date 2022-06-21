@@ -1,8 +1,7 @@
-import {useEffect, useState} from 'react';
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import styles from '../../styles/Home.module.css';
-import PostCard from "../../components/PostCard";
-
+import PostCard from '../../components/PostCard';
 
 export default function Home() {
 	const [posts, setPosts] = useState([]);
@@ -15,7 +14,7 @@ export default function Home() {
 			.catch(function (error) {
 				console.log(error);
 			});
-	}
+	};
 	useEffect(() => {
 		fetchPost();
 	}, []);
@@ -23,11 +22,9 @@ export default function Home() {
 	return (
 		<div className={styles.main}>
 			<h1 className={styles.title}>Welcome home</h1>
-			{
-				posts.map((post) => {
-					return <PostCard key={post._id} post={post}/>
-				})
-			}
+			{posts.map((post) => {
+				return <PostCard key={post._id} post={post} />;
+			})}
 		</div>
 	);
 }
