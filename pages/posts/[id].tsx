@@ -1,16 +1,29 @@
 import axios from 'axios';
 import styles from '../../styles/Post.module.css';
 import Button from '../../components/Button';
-import { useMemo, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
+import TextArea from '../../components/TextArea';
 
 export default function GetPostById({ post }) {
 	const router = useRouter();
 	const [content, setContent] = useState('');
 
-	const handleContent = (e) => {
-		setContent(e.target.value);
-	};
+	const textAreaMemo = useMemo(() => {
+		return (
+			<div className="flex-1">
+				<TextArea
+					cross
+					value={content}
+					row={1}
+					resize
+					onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+						setContent(e.target.value);
+					}}
+				/>
+			</div>
+		);
+	}, [content]);
 
 	const handleSubmit = () => {
 		if (content !== '') {
@@ -39,7 +52,7 @@ export default function GetPostById({ post }) {
 	const renderTextArea = useMemo(() => {
 		return (
 			<div className={styles.commentArea}>
-				<textarea className={styles.textArea} name="body" rows={1} onChange={handleContent} value={content} />
+				{textAreaMemo}
 				<div className={styles.commentButton}>
 					<Button className="right-0" variant="contained" onClick={handleSubmit}>
 						Comment
@@ -66,10 +79,10 @@ export default function GetPostById({ post }) {
 						{post.createDate.split('T')[0]} {post.createDate.split('T')[1].split('.')[0]}
 					</span>
 				</div>
-				{renderTextArea}
 			</div>
 			<div className={styles.childPost}>
-				<h5>children posts here...</h5>
+				{renderTextArea}
+				<h3>bruh</h3>
 			</div>
 		</div>
 	);

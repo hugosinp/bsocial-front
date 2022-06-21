@@ -9,7 +9,7 @@
 	margin: 0;
 	line-height: 1.15;
 	font-size: 4rem;
-	color: #0070f3;
+	color: #00acee;
 }
 
 .card {
@@ -25,8 +25,9 @@
 .card:hover,
 .card:focus,
 .card:active {
-	color: #0070f3;
-	border-color: #0070f3;
+	color: #00acee;
+	border-color: #00acee;
+	cursor: pointer;
 }
 
 .card h2 {

@@ -1,10 +1,9 @@
 .main {
 	width: 50vw;
-	margin: auto;
-	padding: 4rem 0;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
+	margin: 2vh auto auto;
 }
 
 .mainPost {
@@ -12,13 +11,14 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0.5vw;
-	border-bottom: 2px solid #4c9eeb;
-	border-top: 2px solid #4c9eeb;
+	border: 1px solid #00acee;
+	padding: 0.5vw;
+	border-radius: 10px;
+	font-size: x-large;
 }
 
 .name {
 	display: flex;
-	font-size: small;
 }
 
 .authorFullName {
@@ -29,20 +29,12 @@
 .authorUserName {
 	color: #36393f;
 	text-decoration: none;
-	margin-left: 1vw;
-}
-
-.content {
-	margin-top: -0.5vh;
-}
-
-.bottomPost {
-	border-bottom: 2px solid #4c9eeb;
+	margin-left: 0.5vw;
 }
 
 .date {
 	color: #36393f;
-	font-size: x-small;
+	font-size: small;
 }
 
 .commentArea {
@@ -63,11 +55,12 @@
 	margin-top: 1vh;
 }
 
-.childrenPosts {
+.childPost {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 	margin: 0.5vw;
-	border-bottom: 2px solid #4c9eeb;
-	border-top: 2px solid #4c9eeb;
+	border: 1px solid #00acee;
+	border-radius: 10px;
+	padding: 0.5vw;
 }

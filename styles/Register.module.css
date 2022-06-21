@@ -22,7 +22,7 @@
 
 .btn {
 	color: white;
-	background-color: #4c9eeb;
+	background-color: #00acee;
 	border-radius: 5px;
 	font-size: larger;
 	display: block;
@@ -44,7 +44,7 @@
 
 .success {
 	display: block;
-	background-color: #4c9eeb;
+	background-color: #00acee;
 	color: white;
 	width: fit-content;
 }
