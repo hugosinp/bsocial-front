@@ -4,6 +4,7 @@ import Button from '../../components/Button';
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import TextArea from '../../components/TextArea';
+import PostCard from '../../components/PostCard';
 
 export default function GetPostById({ post }) {
 	const router = useRouter();
@@ -42,6 +43,7 @@ export default function GetPostById({ post }) {
 				)
 				.then(function () {
 					router.push(`http://localhost:3000/posts/${post._id}`).then();
+					setContent('');
 				})
 				.catch(function (error) {
 					console.log(error);
@@ -82,7 +84,9 @@ export default function GetPostById({ post }) {
 			</div>
 			<div className={styles.childPost}>
 				{renderTextArea}
-				<h3>bruh</h3>
+				{post.comments.map((comment) => {
+					return <PostCard key={comment._id} post={comment} />;
+				})}
 			</div>
 		</div>
 	);
