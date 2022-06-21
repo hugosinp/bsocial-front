@@ -6,8 +6,8 @@ import PostCard from "../../components/PostCard";
 
 export default function Home() {
 	const [posts, setPosts] = useState([]);
-	useEffect(() => {
-		axios
+	const fetchPost = async () => {
+		await axios
 			.get('http://localhost:3001/posts/')
 			.then(function (response) {
 				setPosts(response.data);
@@ -15,6 +15,9 @@ export default function Home() {
 			.catch(function (error) {
 				console.log(error);
 			});
+	}
+	useEffect(() => {
+		fetchPost();
 	}, []);
 
 	return (
