@@ -13,8 +13,16 @@ interface TextAreaProps {
 	resize?: boolean;
 	length?: number;
 }
-
-const TextArea: React.FC<TextAreaProps> = ({ rounded = true, value, handleDelete, cross = false, row = 6, resize = false, length = 280 }) => {
+const TextArea: React.FC<TextAreaProps> = ({
+	rounded = true,
+	value,
+	handleDelete,
+	cross = false,
+	row = 6,
+	resize = false,
+	length = 280,
+	onChange,
+}) => {
 	const [state, setState] = useState<string | number>(value);
 
 	useEffect(() => {
@@ -22,6 +30,7 @@ const TextArea: React.FC<TextAreaProps> = ({ rounded = true, value, handleDelete
 	}, [value]);
 
 	const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		onChange(e);
 		setState(e.target.value);
 	};
 
