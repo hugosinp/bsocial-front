@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from '../../styles/Register.module.css';
 import axios from 'axios';
-import useRouter from 'next/router';
+import { useRouter } from 'next/router';
 
 export default function Login() {
 	// States for registration
