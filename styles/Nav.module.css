@@ -20,7 +20,13 @@
 	cursor: pointer;
 }
 
-.linkText {
+.linkTextActive {
+	color: #00acee;
+	margin-top: -0.8vh;
+	margin-left: 0.5vh;
+}
+
+.linkTextPassive {
 	margin-top: -0.8vh;
 	margin-left: 0.5vh;
 }
