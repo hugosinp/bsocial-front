@@ -4,7 +4,7 @@ import Button from './Button';
 import { AiOutlineLike } from 'react-icons/ai';
 import axios from 'axios';
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post }: any) => {
 	const handleSubmit = () => {
 		axios
 			.post(

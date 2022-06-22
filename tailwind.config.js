@@ -55,21 +55,6 @@ module.exports = {
 			crossInputBg: '#ebedf3',
 			crossInputSVG: '#616B7D',
 			textGray: '#4A4C54',
-			// replace
-			checkboxGray: '#4A4C54',
-			validationGray: '#4A4C54',
-			// diagnose
-			hoverDiagnoses: '#f4f6fc',
-			linkColor: '#3b5cab',
-			orange: '#ee9642',
-			// about medvir
-			blueBanner: '#4065BD',
-			medvirInfo: '#1f9aaf',
-			// about accelrare
-			blueAccelRare: '#3f65bd',
-			tbColor: '#eaf0fc',
-			//diseases list
-			arrowBlue: '#3969c0',
 			twitter: '#4c9eeb',
 			hoverTwitter: '#3969c0',
 		},

@@ -4,36 +4,78 @@ import { Fragment, useState } from 'react';
 import Button from './Button';
 import InputText from './InputText';
 import TextArea from './TextArea';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 interface ModalProps {
 	title: string;
 	text?: string;
 	type: 'login' | 'post';
 	blockCloseModal?: boolean;
+	onClick?: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false }) => {
-	const [isOpen, setIsOpen] = useState(true);
+const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false, onClick }) => {
+	const [isOpen, setIsOpen] = useState(false);
 	const [content, setContent] = useState('');
 	const [login, setLogin] = useState('');
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState(false);
+	const router = useRouter();
+
+	const callBack = () => {
+		if (onClick) onClick();
+	};
 
 	function closeModal() {
 		if (blockCloseModal) setIsOpen(true);
-		else setIsOpen(false);
+		else {
+			setIsOpen(false);
+			setContent('');
+			setError(false);
+			callBack();
+		}
 	}
 
-	// function openModal() {
-	// 	setIsOpen(true);
-	// }
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	const handleSubmit = () => {
+		if (content === '') {
+			setError(true);
+		} else {
+			setError(false);
+			axios
+				.post(
+					'http://localhost:3001/posts',
+					{
+						content: content,
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem('token')}`,
+						},
+					}
+				)
+				.then(function () {
+					router.push('http://localhost:3000/home').then();
+				})
+				.catch(function (error) {
+					router.push('http://localhost:3000/login').then();
+					console.log(error);
+				});
+			closeModal();
+		}
+	};
 
 	return (
 		<>
-			{/* <div className="fixed inset-0 flex items-center justify-center">
+			<div className="flex">
 				<Button onClick={openModal} variant="outline">
-					Open dialog
+					Create a post
 				</Button>
-			</div> */}
+			</div>
 
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -60,7 +102,7 @@ const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false }) =
 								leaveFrom="opacity-100 scale-100"
 								leaveTo="opacity-0 scale-95"
 							>
-								<Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+								<Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
 									<Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
 										{title}
 									</Dialog.Title>
@@ -99,9 +141,16 @@ const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false }) =
 									)}
 									{type == 'post' && (
 										<>
-											<div className="mt-2">
+											{error && (
+												<div className="text-red mt-1 ml-2">
+													<h1>Please enter a post</h1>
+												</div>
+											)}
+											<div className="mt-4 h-[170px]">
 												<TextArea
 													cross
+													row={6}
+													resize
 													value={content}
 													onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
 														setContent(e.target.value);
@@ -109,7 +158,12 @@ const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false }) =
 												/>
 											</div>
 											<div className="mt-4 float-right">
-												<Button variant="contained" onClick={closeModal}>
+												<Button
+													variant="contained"
+													onClick={() => {
+														handleSubmit();
+													}}
+												>
 													Post the content
 												</Button>
 											</div>
