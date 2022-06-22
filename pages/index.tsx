@@ -2,8 +2,28 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Profil from './../components/Profil';
+import { useMemo, useState, ChangeEvent } from 'react';
+import TextArea from '../components/TextArea';
+import Modal from '../components/Modal';
 
 export default function Home() {
+	const [content, setContent] = useState('');
+
+	const textAreaMemo = useMemo(() => {
+		return (
+			<TextArea
+				cross
+				value={content}
+				onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+					setContent(e.target.value);
+				}}
+			/>
+		);
+	}, [content]);
+
+	const modalMemo = useMemo(() => {
+		return <Modal title="Create a post" type="post" />;
+	}, []);
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -14,7 +34,10 @@ export default function Home() {
 
 			<main className={styles.main}>
 				<Profil fullWidth />
+
+				{modalMemo}
 			</main>
+			{textAreaMemo}
 
 			<footer className={styles.footer}>
 				<a

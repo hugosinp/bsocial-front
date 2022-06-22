@@ -38,11 +38,11 @@ export default function Login() {
 					username: username,
 					password: password,
 				})
-				.then(function (response) {
+				.then(function (response: any) {
 					router.push('http://localhost:3000/home').then();
 					localStorage.setItem('token', response.data.accessToken);
 				})
-				.catch(function (error) {
+				.catch(function (error: any) {
 					console.log(error);
 				});
 		}
