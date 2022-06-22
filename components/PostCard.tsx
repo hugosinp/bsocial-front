@@ -8,7 +8,9 @@ const PostCard = ({ post }) => {
 				<p className={styles.authorFullName}>
 					{post.author.firstname} {post.author.lastname}
 				</p>
-				<p className={styles.authorUserName}>@{post.author.username}</p>
+				<Link href={`/users/${post.author.username}`}>
+					<p className={styles.authorUserName}>@{post.author.username}</p>
+				</Link>
 			</div>
 			<Link href={`/posts/${post._id}`}>
 				<div>

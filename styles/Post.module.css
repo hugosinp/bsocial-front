@@ -32,6 +32,10 @@
 	margin-left: 0.5vw;
 }
 
+.authorUserName:hover {
+	text-decoration: underline;
+}
+
 .date {
 	color: #36393f;
 	font-size: small;

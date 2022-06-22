@@ -5,6 +5,7 @@ import { ChangeEvent, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import TextArea from '../../components/TextArea';
 import PostCard from '../../components/PostCard';
+import Link from 'next/link';
 
 export default function GetPostById({ post }) {
 	const router = useRouter();
@@ -71,7 +72,9 @@ export default function GetPostById({ post }) {
 					<p className={styles.authorFullName}>
 						{post.author.firstname} {post.author.lastname}
 					</p>
-					<p className={styles.authorUserName}>@{post.author.username}</p>
+					<Link href={`/users/${post.author.username}`}>
+						<p className={styles.authorUserName}>@{post.author.username}</p>
+					</Link>
 				</div>
 				<div>
 					<p className={styles.content}>{post.content}</p>
