@@ -47,6 +47,7 @@ export default function GetPostById({ post }) {
 					setContent('');
 				})
 				.catch(function (error) {
+					router.push('http://localhost:3000/login').then();
 					console.log(error);
 				});
 		}

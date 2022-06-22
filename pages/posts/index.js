@@ -37,6 +37,7 @@ export default function Post() {
 					router.push('http://localhost:3000/home').then();
 				})
 				.catch(function (error) {
+					router.push('http://localhost:3000/login').then();
 					console.log(error);
 				});
 		}
