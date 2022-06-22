@@ -3,14 +3,15 @@ import clsx from 'clsx';
 import Cross from '../public/assets/svg/cross';
 
 interface InputTextProps {
-	type?: 'text' | 'number' | 'email';
+	type?: 'text' | 'number' | 'email' | 'password';
 	fullWidth?: boolean;
 	isSmall?: boolean;
 	min?: string;
 	isCenter?: boolean;
+	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	handleDelete?: (value: string) => void;
 	placeHolder?: string;
-	value: string | number;
+	value?: string | number;
 	rounded?: boolean;
 	cross?: boolean;
 	semiBold?: boolean;
@@ -26,20 +27,19 @@ const InputText: React.FC<InputTextProps> = ({
 	rounded = true,
 	value,
 	handleDelete,
+	onChange,
 	cross = false,
 	semiBold = false,
 }) => {
-	const [state, setState] = useState<string | number>(value);
+	const [state, setState] = useState<string | number | undefined>(value);
 
 	useEffect(() => {
 		setState(value);
 	}, [value]);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const regex = new RegExp(/^[0-9]*$/g);
-		if (e.target.value && ((e.target.value.match(regex) && type === 'number') || type === 'text' || type === 'email')) {
-			setState(e.target.value);
-		}
+		setState(e.target.value);
+		onChange(e);
 	};
 	const handleClick = () => {
 		setState('');
