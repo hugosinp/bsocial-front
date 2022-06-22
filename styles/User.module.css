@@ -1,0 +1,40 @@
+.main {
+	margin: auto;
+	max-width: 50vw;
+	align-items: center;
+}
+
+.userInfo {
+	margin-top: 10vh;
+	display: flex;
+}
+
+.static {
+	margin-bottom: 3vh;
+}
+
+.fullname {
+	font-size: 2vw;
+	font-weight: bold;
+}
+
+.username {
+	font-size: 1.2vw;
+	color: #36393f;
+}
+
+.emailBlock {
+	margin-top: 1.5vh;
+	font-size: 1.2vw;
+	color: #36393f;
+	display: flex;
+}
+
+.email {
+	margin-top: -0.7vh;
+	margin-left: 0.7vh;
+}
+
+.edit {
+	margin-left: auto;
+}

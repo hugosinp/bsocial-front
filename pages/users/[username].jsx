@@ -1,27 +1,45 @@
 import axios from 'axios';
+import PostCard from '../../components/PostCard';
+import styles from '../../styles/User.module.css';
+import Button from '../../components/Button';
+import { AiOutlineMail } from 'react-icons/ai';
 
-export default function GetUserByUsername({ user }) {
+export default function GetUserByUsername({ user, posts }) {
 	console.log(user);
+	console.log(posts);
 	return (
-		<div>
-			<div>
-				<h3>
-					{user.firstname} {user.lastname}
-				</h3>
+		<div className={styles.main}>
+			<div className={styles.userInfo}>
+				<div className={styles.static}>
+					<p className={styles.fullname}>
+						{user.firstname} {user.lastname}
+					</p>
+					<p className={styles.username}>@{user.username}</p>
+					<div className={styles.emailBlock}>
+						<AiOutlineMail />
+						<p className={styles.email}>{user.email}</p>
+					</div>
+				</div>
+				<div className={styles.edit}>
+					<Button variant="outline">Edit profile</Button>
+				</div>
 			</div>
-			<div>
-				<h4>@{user.username}</h4>
-			</div>
+			{posts.map((post) => {
+				return <PostCard key={post._id} post={post} />;
+			})}
 		</div>
 	);
 }
 
 export async function getServerSideProps(context) {
-	const axiosResponse = await axios.get(`http://localhost:3001/users/pb/${context.query.username}`);
-	const user = axiosResponse.data;
+	const userResponse = await axios.get(`http://localhost:3001/users/pb/${context.query.username}`);
+	const postResponse = await axios.get(`http://localhost:3001/posts/username/${context.query.username}`);
+	const user = userResponse.data;
+	const posts = postResponse.data;
 	return {
 		props: {
 			user: user,
+			posts: posts,
 		},
 	};
 }
