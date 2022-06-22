@@ -62,7 +62,15 @@
 	text-decoration: underline;
 }
 
+.bottom {
+	display: flex;
+}
+
 .date {
 	color: #36393f;
 	font-size: small;
+}
+
+.likes {
+	margin-left: auto;
 }
