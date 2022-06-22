@@ -55,7 +55,7 @@ const InputText: React.FC<InputTextProps> = ({
 				min={min}
 				placeholder={placeHolder}
 				className={clsx({
-					'text-darkGray py-2 px-4  border border-middleGray  focus:outline-darkBlue': true,
+					'text-darkGray py-2 px-4  border border-midGray  focus:outline-darkBlue shadow': true,
 					'rounded ': rounded,
 					'w-full': fullWidth,
 					'w-20': isSmall,

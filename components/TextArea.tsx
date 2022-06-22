@@ -13,7 +13,6 @@ interface TextAreaProps {
 	resize?: boolean;
 	length?: number;
 }
-
 const TextArea: React.FC<TextAreaProps> = ({
 	rounded = true,
 	value,
@@ -48,7 +47,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 				onChange={handleChange}
 				value={state}
 				className={clsx({
-					'text-darkGray py-2 px-4  border border-middleGray  focus:outline-darkBlue flex-1 w-full min-h-[50px] max-h-[120px]': true,
+					'text-darkGray py-2 px-4  border border-middleGray  focus:outline-darkBlue flex-1 w-full': true,
 					'rounded ': rounded,
 					'resize-none': !resize,
 				})}
