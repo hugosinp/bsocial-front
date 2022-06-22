@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import TextArea from '../../components/TextArea';
 import PostCard from '../../components/PostCard';
 import Link from 'next/link';
+import Nav from '../../components/Nav';
 
 export default function GetPostById({ post }) {
 	const router = useRouter();
@@ -67,30 +68,33 @@ export default function GetPostById({ post }) {
 	}, [content]);
 
 	return (
-		<div className={styles.main}>
-			<div className={styles.mainPost}>
-				<div className={styles.name}>
-					<p className={styles.authorFullName}>
-						{post.author.firstname} {post.author.lastname}
-					</p>
-					<Link href={`/users/${post.author.username}`}>
-						<p className={styles.authorUserName}>@{post.author.username}</p>
-					</Link>
+		<div className={styles.global}>
+			<Nav />
+			<div className={styles.main}>
+				<div className={styles.mainPost}>
+					<div className={styles.name}>
+						<p className={styles.authorFullName}>
+							{post.author.firstname} {post.author.lastname}
+						</p>
+						<Link href={`/users/${post.author.username}`}>
+							<p className={styles.authorUserName}>@{post.author.username}</p>
+						</Link>
+					</div>
+					<div>
+						<p className={styles.content}>{post.content}</p>
+					</div>
+					<div className={styles.bottomPost}>
+						<span className={styles.date}>
+							{post.createDate.split('T')[0]} {post.createDate.split('T')[1].split('.')[0]}
+						</span>
+					</div>
 				</div>
-				<div>
-					<p className={styles.content}>{post.content}</p>
+				<div className={styles.childPost}>
+					{renderTextArea}
+					{post.comments.map((comment) => {
+						return <PostCard key={comment._id} post={comment} />;
+					})}
 				</div>
-				<div className={styles.bottomPost}>
-					<span className={styles.date}>
-						{post.createDate.split('T')[0]} {post.createDate.split('T')[1].split('.')[0]}
-					</span>
-				</div>
-			</div>
-			<div className={styles.childPost}>
-				{renderTextArea}
-				{post.comments.map((comment) => {
-					return <PostCard key={comment._id} post={comment} />;
-				})}
 			</div>
 		</div>
 	);

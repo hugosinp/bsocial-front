@@ -1,3 +1,7 @@
+.global {
+	display: flex;
+}
+
 .main {
 	width: 50vw;
 	flex: 1;

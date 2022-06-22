@@ -3,30 +3,34 @@ import PostCard from '../../components/PostCard';
 import styles from '../../styles/User.module.css';
 import Button from '../../components/Button';
 import { AiOutlineMail } from 'react-icons/ai';
+import Nav from '../../components/Nav';
 
 export default function GetUserByUsername({ user, posts }) {
 	console.log(user);
 	console.log(posts);
 	return (
-		<div className={styles.main}>
-			<div className={styles.userInfo}>
-				<div className={styles.static}>
-					<p className={styles.fullname}>
-						{user.firstname} {user.lastname}
-					</p>
-					<p className={styles.username}>@{user.username}</p>
-					<div className={styles.emailBlock}>
-						<AiOutlineMail />
-						<p className={styles.email}>{user.email}</p>
+		<div className={styles.global}>
+			<Nav />
+			<div className={styles.main}>
+				<div className={styles.userInfo}>
+					<div className={styles.static}>
+						<p className={styles.fullname}>
+							{user.firstname} {user.lastname}
+						</p>
+						<p className={styles.username}>@{user.username}</p>
+						<div className={styles.emailBlock}>
+							<AiOutlineMail />
+							<p className={styles.email}>{user.email}</p>
+						</div>
+					</div>
+					<div className={styles.edit}>
+						<Button variant="outline">Edit profile</Button>
 					</div>
 				</div>
-				<div className={styles.edit}>
-					<Button variant="outline">Edit profile</Button>
-				</div>
+				{posts.map((post) => {
+					return <PostCard key={post._id} post={post} />;
+				})}
 			</div>
-			{posts.map((post) => {
-				return <PostCard key={post._id} post={post} />;
-			})}
 		</div>
 	);
 }

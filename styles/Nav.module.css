@@ -1,0 +1,26 @@
+.global {
+	display: flex;
+}
+
+.nav {
+	margin-left: 8vw;
+	margin-top: 8vw;
+}
+
+.link {
+	margin-top: 1vh;
+	padding: 1vh;
+	display: flex;
+	font-size: 1.5vw;
+}
+
+.link:hover {
+	border-radius: 15px;
+	background-color: #e9e9e9;
+	cursor: pointer;
+}
+
+.linkText {
+	margin-top: -0.8vh;
+	margin-left: 0.5vh;
+}
