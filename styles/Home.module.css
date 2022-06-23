@@ -10,7 +10,6 @@
 
 .title {
 	text-align: center;
-	margin: 0;
 	line-height: 1.15;
 	font-size: 4rem;
 	color: #00acee;
@@ -21,7 +20,7 @@
 	display: block;
 	margin-bottom: 1vh;
 	padding: 1.5rem;
-	border: 1px solid #eaeaea;
+	border: 1px solid #e6e7e9;
 	border-radius: 10px;
 	transition: color 0.15s ease, border-color 0.15s ease;
 }
@@ -54,7 +53,7 @@
 }
 
 .authorUserName {
-	color: #36393f;
+	color: #4a4c54;
 	padding-left: 1vw;
 }
 

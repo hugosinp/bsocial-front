@@ -25,7 +25,7 @@ export default function Login() {
 					password: password,
 				})
 				.then(function (response: any) {
-					router.push('http://localhost:3000/home').then();
+					router.push('/home').then();
 					localStorage.setItem('token', response.data.accessToken);
 					localStorage.setItem('username', response.data.username);
 				})
