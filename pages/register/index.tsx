@@ -121,7 +121,7 @@ export default function Register() {
 							</div>
 						</div>
 						<div className="mt-6">
-							<Link href={'/login'}>
+							<Link href={'/'}>
 								<Button variant="white">You have an account?</Button>
 							</Link>
 							<Button variant="contained" onClick={handleSubmit}>
