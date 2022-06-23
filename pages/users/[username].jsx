@@ -7,7 +7,6 @@ import Nav from '../../components/Nav';
 
 export default function GetUserByUsername({ user, posts }) {
 	console.log(user);
-	console.log(posts);
 	return (
 		<div className={styles.global}>
 			<Nav />

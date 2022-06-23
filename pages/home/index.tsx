@@ -4,18 +4,14 @@ import styles from '../../styles/Home.module.css';
 import PostCard from '../../components/PostCard';
 import Modal from '../../components/Modal';
 import { Post } from '../../components/typeScriptInclude';
-import Router from 'next/router';
+import Nav from '../../components/Nav';
 
 export default function Home() {
 	const [posts, setPosts] = useState([]);
 
-	const callback = () => {
-		Router.reload();
-	};
-
 	const fetchPost = async () => {
 		await axios
-			.get('http://localhost:3001/posts/')
+			.get('http://localhost:3001/posts')
 			.then(function (response) {
 				setPosts(response.data);
 			})
@@ -23,6 +19,7 @@ export default function Home() {
 				console.log(error);
 			});
 	};
+
 	useEffect(() => {
 		fetchPost();
 	}, []);
@@ -30,18 +27,21 @@ export default function Home() {
 	const modalMemo = useMemo(() => {
 		return (
 			<>
-				<Modal title="Create a post" type="post" onClick={callback} />
+				<Modal title="Create a post" type="post" onClick={() => fetchPost()} />
 			</>
 		);
 	}, []);
 
 	return (
-		<div className={styles.main}>
-			<h1 className={styles.title}>Welcome home</h1>
-			{modalMemo}
-			{posts.map((post: Post) => {
-				if (post) return <PostCard key={post._id} post={post} />;
-			})}
+		<div className={styles.global}>
+			<Nav />
+			<div className={styles.main}>
+				<h1 className={styles.title}>Welcome home</h1>
+				{modalMemo}
+				{posts.map((post: Post) => {
+					if (post) return <PostCard key={post._id} post={post} />;
+				})}
+			</div>
 		</div>
 	);
 }

@@ -33,7 +33,6 @@ const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false, onC
 			setIsOpen(false);
 			setContent('');
 			setError(false);
-			callBack();
 		}
 	}
 
@@ -59,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false, onC
 					}
 				)
 				.then(function () {
-					router.push('http://localhost:3000/home').then();
+					callBack();
 				})
 				.catch(function (error) {
 					router.push('http://localhost:3000/login').then();

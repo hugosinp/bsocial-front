@@ -3,8 +3,11 @@ import styles from '../styles/Home.module.css';
 import Button from './Button';
 import { AiOutlineLike } from 'react-icons/ai';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
-const PostCard = ({ post }: any) => {
+const PostCard = ({ post }) => {
+	console.log(post);
+	const router = useRouter();
 	const handleSubmit = () => {
 		axios
 			.post(
@@ -18,10 +21,8 @@ const PostCard = ({ post }: any) => {
 					},
 				}
 			)
-			.then(function (response) {
-				console.log(response);
-			})
 			.catch(function (error) {
+				router.push('http://localhost:3000/login');
 				console.log(error);
 			});
 	};
