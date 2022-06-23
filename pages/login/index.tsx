@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import InputText from './../../components/InputText';
@@ -27,6 +27,7 @@ export default function Login() {
 				.then(function (response: any) {
 					router.push('http://localhost:3000/home').then();
 					localStorage.setItem('token', response.data.accessToken);
+					localStorage.setItem('username', response.data.username);
 				})
 				.catch(function (error: any) {
 					console.log(error);

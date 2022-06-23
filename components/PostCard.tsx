@@ -4,10 +4,26 @@ import Button from './Button';
 import { AiOutlineLike } from 'react-icons/ai';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 const PostCard = ({ post }) => {
-	console.log(post);
+	const [likes, setLikes] = useState();
 	const router = useRouter();
+	const getLikes = async () => {
+		await axios
+			.get('http://localhost:3001/likes/post/' + post._id)
+			.then(function (response) {
+				setLikes(response.data);
+			})
+			.catch(function (error) {
+				router.push('http://localhost:3000/login');
+				console.log(error);
+			});
+	};
+	useEffect(() => {
+		getLikes();
+	}, [getLikes]);
+
 	const handleSubmit = () => {
 		axios
 			.post(
@@ -21,6 +37,9 @@ const PostCard = ({ post }) => {
 					},
 				}
 			)
+			.then(function () {
+				getLikes();
+			})
 			.catch(function (error) {
 				router.push('http://localhost:3000/login');
 				console.log(error);
@@ -50,7 +69,7 @@ const PostCard = ({ post }) => {
 					<Button variant={'white'} onClick={handleSubmit}>
 						<AiOutlineLike />
 					</Button>
-					<span>{post.likesCount ? post.likesCount : 0}</span>
+					<span>{likes ? likes : 0}</span>
 				</div>
 			</div>
 		</div>

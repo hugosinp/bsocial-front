@@ -14,6 +14,8 @@ import { useRouter } from 'next/router';
 const Nav = () => {
 	const router = useRouter();
 	const currentRoute = router.pathname;
+	const username = localStorage.getItem('username');
+
 	return (
 		<>
 			<div className={styles.nav}>
@@ -49,7 +51,7 @@ const Nav = () => {
 				</div>
 				<div className={styles.link}>
 					<AiOutlineUser />
-					<Link href={'/home'}>
+					<Link href={'/users/' + username}>
 						<p className={currentRoute === '/profile' ? styles.linkTextActive : styles.linkTextPassive}>Profile</p>
 					</Link>
 				</div>

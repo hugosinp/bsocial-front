@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Profil from './../components/Profil';
-import { useMemo, useState, ChangeEvent } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import TextArea from '../components/TextArea';
 import Modal from '../components/Modal';
 

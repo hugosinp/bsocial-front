@@ -1,6 +1,5 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
 import Button from './Button';
 import InputText from './InputText';
 import TextArea from './TextArea';

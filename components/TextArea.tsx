@@ -13,6 +13,7 @@ interface TextAreaProps {
 	resize?: boolean;
 	length?: number;
 }
+
 const TextArea: React.FC<TextAreaProps> = ({
 	rounded = true,
 	value,

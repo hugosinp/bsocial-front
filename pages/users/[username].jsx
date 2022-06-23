@@ -6,7 +6,6 @@ import { AiOutlineMail } from 'react-icons/ai';
 import Nav from '../../components/Nav';
 
 export default function GetUserByUsername({ user, posts }) {
-	console.log(user);
 	return (
 		<div className={styles.global}>
 			<Nav />
