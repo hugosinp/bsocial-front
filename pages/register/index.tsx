@@ -13,6 +13,8 @@ export default function Register() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const router = useRouter();
+	// State for checking the errors
+	const [error, setError] = useState('');
 	// Handling the form submission
 	const handleSubmit = () => {
 		if (!(firstname === '' || lastname === '' || username === '' || email === '' || password === '')) {
@@ -25,11 +27,14 @@ export default function Register() {
 					password: password,
 				})
 				.then(function () {
-					router.push('http://localhost:3000/login').then();
+					router.push('/login').then();
 				})
 				.catch(function (error) {
 					console.log(error);
+					setError(error.message);
 				});
+		} else {
+			setError('All fields must be completed');
 		}
 	};
 
@@ -51,6 +56,11 @@ export default function Register() {
 						<h2 className="text-[32px] text-twitter">
 							<strong>Register your account </strong>
 						</h2>
+						{error && (
+							<div className="text-red mt-1 ml-2">
+								<h1>{error}</h1>
+							</div>
+						)}
 						<div className="mt-4">
 							<div className="mb-2">
 								<InputText

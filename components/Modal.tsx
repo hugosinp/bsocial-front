@@ -69,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false, onC
 
 	return (
 		<>
-			<div className="flex">
+			<div className="flex justify-end my-8">
 				<Button onClick={openModal} variant="outline">
 					Create a post
 				</Button>

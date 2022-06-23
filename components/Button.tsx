@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({ variant, onClick, fullWidth = false, ch
 				'bg-twitter hover:bg-hoverTwitter text-white': variant === 'contained',
 				'bg-white': variant === 'white',
 				'w-full': fullWidth,
-				'bg-transparent text-greenOutline hover:bg-lightGreenHover  border-2  border-greenOutline py-1': variant === 'outline',
+				'bg-transparent text-darkBlue hover:bg-twitter hover:bg-opacity-25  border-2  border-darkBlue py-1': variant === 'outline',
 				'opacity-50': disabled && variant === 'contained',
 				' text-disabledGray border-disabledGray bg-transparent': disabled && variant === 'outline',
 			})}

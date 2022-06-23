@@ -36,11 +36,13 @@ export default function Home() {
 		<div className={styles.global}>
 			<Nav />
 			<div className={styles.main}>
-				<h1 className={styles.title}>Welcome home</h1>
+				<h1 className={`${styles.title} mb-4`}>Welcome home</h1>
 				{modalMemo}
-				{posts.map((post: Post) => {
-					if (post) return <PostCard key={post._id} post={post} />;
-				})}
+				<div className="">
+					{posts.map((post: Post) => {
+						if (post) return <PostCard key={post._id} post={post} />;
+					})}
+				</div>
 			</div>
 		</div>
 	);
