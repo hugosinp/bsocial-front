@@ -36,9 +36,11 @@ export default function Home() {
 		<div className={styles.global}>
 			<Nav />
 			<div className={styles.main}>
-				<h1 className={`${styles.title} mb-4`}>Welcome home</h1>
-				{modalMemo}
-				<div className="">
+				<div className={styles.top}>
+					<h1 className={`${styles.title} mb-4`}>Welcome home</h1>
+					<div className={styles.postButton}>{modalMemo}</div>
+				</div>
+				<div>
 					{posts.map((post: Post) => {
 						if (post) return <PostCard key={post._id} post={post} />;
 					})}

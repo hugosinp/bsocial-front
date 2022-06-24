@@ -5,6 +5,7 @@ import InputText from './InputText';
 import TextArea from './TextArea';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 interface ModalProps {
 	title: string;
@@ -70,8 +71,11 @@ const Modal: React.FC<ModalProps> = ({ title, type, blockCloseModal = false, onC
 	return (
 		<>
 			<div className="flex justify-end my-8">
-				<Button onClick={openModal} variant="outline">
-					Create a post
+				<Button onClick={openModal} variant="contained">
+					<div className={'flex p-2 mr-1'}>
+						<AiOutlinePlus className={'mt-2 mr-2'} />
+						Create a post
+					</div>
 				</Button>
 			</div>
 
